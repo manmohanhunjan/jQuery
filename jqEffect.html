@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      #redBox {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+      }
+
+      #blueBox {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        margin: 10px;
+      }
+
+      #greenBox {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+        margin: 10px;
+      }
+
+      #btn {
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="redBox"></div>
+
+    <div id="blueBox"></div>
+
+    <div id="greenBox"></div>
+
+    <button id="btn">Start Effect</button>
+
+    <button id="btnStopEffect">Stop Effect</button>
+
+    <button id="btnFadeToggle">Fade Toggle Effect</button>
+
+    <button id="btnSlideToggle">Slide Toggle Effect</button>
+
+    <button id="btnQueue">Queue</button>
+
+    <button id="btnCallback">Callback Hide</button>
+
+    <script>
+      $(() => {
+        $("#btn").click(() => {
+          $("#redBox") //chaining 
+            .hide(1000)
+            .show(1000)
+            .fadeOut(1000)
+            .fadeIn(1000)
+            .fadeTo(1000, 0.5)
+            .slideUp(1000)
+            .slideDown(1000)
+            .animate(
+              {
+                width: "300px",
+                height: "300px",
+                marginLeft: "100px",
+                marginTop: "100px",
+              },
+              1000
+            )
+            .animate(
+              {
+                width: "200px",
+                height: "200px",
+                marginLeft: "10px",
+                marginTop: "10px",
+              },
+              1000
+            );
+
+          $("#blueBox")
+            .hide(1000)
+            .show(1000)
+            .fadeOut(1000)
+            .fadeIn(1000)
+            .fadeTo(1000, 0.5)
+            .slideUp(1000)
+            .slideDown(1000)
+            .animate(
+              {
+                width: "300px",
+                height: "300px",
+                marginLeft: "100px",
+                marginTop: "100px",
+              },
+              1000
+            )
+            .animate(
+              {
+                width: "200px",
+                height: "200px",
+                marginLeft: "10px",
+                marginTop: "10px",
+              },
+              1000
+            );
+
+          $("#greenBox")
+            .hide(1000)
+            .show(1000)
+            .fadeOut(1000)
+            .fadeIn(1000)
+            .fadeTo(1000, 0.5)
+            .slideUp(1000)
+            .slideDown(1000)
+            .animate(
+              {
+                width: "300px",
+                height: "300px",
+                marginLeft: "100px",
+                marginTop: "100px",
+              },
+              1000
+            )
+            .animate(
+              {
+                width: "200px",
+                height: "200px",
+                marginLeft: "10px",
+                marginTop: "10px",
+              },
+              1000,
+              () => {
+                alert("Animation is done");
+              }
+            );
+        });
+
+        //finish() method stops the animation
+
+        $("#btnStopEffect").click(() => {
+          $("#redBox").finish();
+          $("#blueBox").finish();
+          $("#greenBox").finish();
+        });
+
+        //fadeToggle() method toggles between fadeOut() and fadeIn() methods
+
+        $("#btnFadeToggle").click(() => {
+          $("#redBox").fadeToggle(1000);
+          $("#blueBox").fadeToggle(1000);
+          $("#greenBox").fadeToggle(1000);
+        });
+
+        //queue() method queues the animations
+
+        $("#btnQueue").click(() => {
+          $("#redBox").queue(() => {
+            $("#redBox").css("background-color", "yellow");
+            $("#redBox").dequeue();
+          });
+          $("#redBox").queue(() => {
+            $("#redBox").css("background-color", "blue");
+            $("#redBox").dequeue();
+          });
+          $("#redBox").queue(() => {
+            $("#redBox").css("background-color", "green");
+            $("#redBox").dequeue();
+          });
+        });
+
+        //slideToggle() method toggles between slideUp() and slideDown() methods
+
+        $("#btnSlideToggle").click(() => {
+          $("#redBox").slideToggle(1000);
+          $("#blueBox").slideToggle(1000);
+          $("#greenBox").slideToggle(1000);
+        });
+
+        //callback function is executed after the animation is done
+
+        $("#btnCallback").click(() => {
+          $("#redBox").hide(1000, () => {
+            alert("Red box is now hidden");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
