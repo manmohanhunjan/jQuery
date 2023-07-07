@@ -16,6 +16,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 
+    <script src="script.js" defer></script>
 
 </head>
 
@@ -35,11 +36,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="addMovieForm">
             <label for="" class="form-label">
                 Movie Name
             </label>
             <input type="text" class="form-control" id="movieName">
+            <label for="" class="form-label">
+                Movie Image Url
+            </label>
+            <input type="text" class="form-control" id="movieImgUrl">
             <label for="" class="form-label">
                 Movie Description
             </label>
@@ -146,77 +151,51 @@
         <div class="container-fluid mt-3 p-5">
             <div class="row flex-grow-1">
                 <!-- Movie Cards -->
-                <div class="col-md-6">
-                    <div class="row flex-grow-1 text-bg-dark shadow border border-2 rounded-3 border-dark d-flex p-3 mb-3">
+                <div class="col-md-6" id="cardContainer">
+                    <!-- demo Card -->
+                    <!-- <div class="row flex-grow-1 text-bg-dark shadow border border-2 rounded-3 border-dark d-flex p-3 mb-3">
                         <div class="col-md-5 ">
                             <img src="https://www.movieposters.com/cdn/shop/products/c11f66ec0451a36f5aae494b1509b069_bf869227-c34a-449c-83ff-ed093d341dd3_240x360_crop_center.progressive.jpg?v=1573616179"
                                 alt="" class="w-100 rounded-3">
 
                         </div>
                         <div class="col-md-7 d-flex flex-column justify-content-center overflow-hidden">
-                            <!-- movie title -->
                             <h4>Jaws</h4>
-                            <!-- movie description -->
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                            <!-- movie rating -->
                             <p>Rating: 4.5</p>
-                            <!-- movie genre -->
                             <p>Genre: Horror</p>
-                            <!-- movie release date -->
                             <p>Release Date: 1975</p>
-                            <!-- add to table -->
                             <button class="btn btn-success">Add to Table</button>
                             
                         </div>
-                    </div>
+                    </div> -->
 
 
-                    <div class="row flex-grow-1 text-bg-dark shadow border border-2 rounded-3 border-dark d-flex p-3">
-                        <div class="col-md-5 ">
-                            <img src="https://www.movieposters.com/cdn/shop/products/c11f66ec0451a36f5aae494b1509b069_bf869227-c34a-449c-83ff-ed093d341dd3_240x360_crop_center.progressive.jpg?v=1573616179"
-                                alt="" class="w-100 rounded-3">
-
-                        </div>
-                        <div class="col-md-7 d-flex flex-column justify-content-center overflow-hidden">
-                            <!-- movie title -->
-                            <h4>Jaws</h4>
-                            <!-- movie description -->
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-                            <!-- movie rating -->
-                            <p>Rating: 4.5</p>
-                            <!-- movie genre -->
-                            <p>Genre: Horror</p>
-                            <!-- movie release date -->
-                            <p>Release Date: 1975</p>
-                            <!-- add to table -->
-                            <button class="btn btn-success">Add to Table</button>
-                            
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- TABLE COL -->
                 <div class="col-md-6">
-                    <div class="table-responsive">
-                        <table class="table table-primary">
+                    <div class="table-responsive rounded-3 ">
+                        <table class="table table-light ">
                             <thead>
                                 <tr>
-                                    <th scope="col">Column 1</th>
-                                    <th scope="col">Column 2</th>
-                                    <th scope="col">Column 3</th>
+                                    <th scope="col">S.no</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Release Date</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="">
-                                    <td scope="row">R1C1</td>
-                                    <td>R1C2</td>
-                                    <td>R1C3</td>
-                                </tr>
-                                <tr class="">
-                                    <td scope="row">Item</td>
-                                    <td>Item</td>
-                                    <td>Item</td>
-                                </tr>
+                                <!-- <tr class="">
+                                    <td scope="row">1</td>
+                                    <td>Jaws</td>
+                                    <td>4.5</td>
+                                    <td>Horror</td>
+                                    <td>1/1/1</td>
+                                </tr> -->
+                                
                             </tbody>
                         </table>
                     </div>
