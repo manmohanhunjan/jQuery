@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Movie DB</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body>
+    <!-- floating btn -->
+    <a href="#" class="btn btn-primary btn-floating rounded-circle " data-bs-toggle="modal" data-bs-target="#movieInputForm">
+        <i class="bi bi-plus"></i>
+    </a>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="movieInputForm" tabindex="-1" aria-labelledby="movieInputFormLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieInputFormLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <label for="" class="form-label">
+                Movie Name
+            </label>
+            <input type="text" class="form-control" id="movieName">
+            <label for="" class="form-label">
+                Movie Description
+            </label>
+            <input type="text" class="form-control" id="movieDesc">
+            <label for="" class="form-label">
+                Movie Rating
+            </label>
+            <input type="text" class="form-control" id="movieRating">
+            <label for="" class="form-label">
+                Movie Genre
+            </label>
+            <input type="text" class="form-control" id="movieGenre">
+            <label for="" class="form-label">
+                Movie Release Date
+            </label>
+            <input type="text" class="form-control" id="movieReleaseDate">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="addMovieBtn">Add Movie</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <header>
+        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- LOGO -->
+                <a href="#" class="navbar-brand "><img
+                        src="data:image/png;base64,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"
+                        alt="Avatar logo" style="width: 40px;" class="rounded-pill"></a>
+
+                <!-- Title -->
+                <a class="navbar-brand mt-1" href="#">Movie DB</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" aria-current="page">Home <span
+                                    class="visually-hidden">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="d-flex my-2 my-lg-0">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <div class="container ">
+            <!-- Carousel -->
+            <div id="moviePosters" class="carousel slide mt-3" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#moviePosters" data-bs-slide-to="0" class="active" aria-current="true"
+                        aria-label="First slide"></li>
+                    <li data-bs-target="#moviePosters" data-bs-slide-to="1" aria-label="Second slide"></li>
+                    <li data-bs-target="#moviePosters" data-bs-slide-to="2" aria-label="Third slide"></li>
+                </ol>
+                <div class="carousel-inner rounded-3" role="listbox">
+                    <div class="carousel-item active">
+                        <img src="https://whatnerd.com/wp-content/uploads/2021/12/greatest-movie-posters-of-all-time-featured.jpg"
+                            class="w-100 d-block" alt="First slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://d23.com/app/uploads/2021/06/1180w-600h-060821_D23-poster-article_FINAL_iris.jpg"
+                            class="w-100 d-block" alt="Second slide">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://wallpapers.com/images/hd/movie-poster-background-q1zm830g0hfww2lk.jpg"
+                            class="w-100 d-block" alt="Third slide">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#moviePosters" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#moviePosters" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-3 p-5">
+            <div class="row flex-grow-1">
+                <!-- Movie Cards -->
+                <div class="col-md-6">
+                    <div class="row flex-grow-1 text-bg-dark shadow border border-2 rounded-3 border-dark d-flex p-3 mb-3">
+                        <div class="col-md-5 ">
+                            <img src="https://www.movieposters.com/cdn/shop/products/c11f66ec0451a36f5aae494b1509b069_bf869227-c34a-449c-83ff-ed093d341dd3_240x360_crop_center.progressive.jpg?v=1573616179"
+                                alt="" class="w-100 rounded-3">
+
+                        </div>
+                        <div class="col-md-7 d-flex flex-column justify-content-center overflow-hidden">
+                            <!-- movie title -->
+                            <h4>Jaws</h4>
+                            <!-- movie description -->
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                            <!-- movie rating -->
+                            <p>Rating: 4.5</p>
+                            <!-- movie genre -->
+                            <p>Genre: Horror</p>
+                            <!-- movie release date -->
+                            <p>Release Date: 1975</p>
+                            <!-- add to table -->
+                            <button class="btn btn-success">Add to Table</button>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="row flex-grow-1 text-bg-dark shadow border border-2 rounded-3 border-dark d-flex p-3">
+                        <div class="col-md-5 ">
+                            <img src="https://www.movieposters.com/cdn/shop/products/c11f66ec0451a36f5aae494b1509b069_bf869227-c34a-449c-83ff-ed093d341dd3_240x360_crop_center.progressive.jpg?v=1573616179"
+                                alt="" class="w-100 rounded-3">
+
+                        </div>
+                        <div class="col-md-7 d-flex flex-column justify-content-center overflow-hidden">
+                            <!-- movie title -->
+                            <h4>Jaws</h4>
+                            <!-- movie description -->
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
+                            <!-- movie rating -->
+                            <p>Rating: 4.5</p>
+                            <!-- movie genre -->
+                            <p>Genre: Horror</p>
+                            <!-- movie release date -->
+                            <p>Release Date: 1975</p>
+                            <!-- add to table -->
+                            <button class="btn btn-success">Add to Table</button>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLE COL -->
+                <div class="col-md-6">
+                    <div class="table-responsive">
+                        <table class="table table-primary">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Column 1</th>
+                                    <th scope="col">Column 2</th>
+                                    <th scope="col">Column 3</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="">
+                                    <td scope="row">R1C1</td>
+                                    <td>R1C2</td>
+                                    <td>R1C3</td>
+                                </tr>
+                                <tr class="">
+                                    <td scope="row">Item</td>
+                                    <td>Item</td>
+                                    <td>Item</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
