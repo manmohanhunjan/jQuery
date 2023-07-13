@@ -27,28 +27,40 @@
 
     <!-- dropdown -->
     <div>
-        <select name="myInput" id="myInput">
-            <option value="val1">val1</option>
-            <option value="val2">val2</option>
-            <option value="val3">val3</option>
+        <select name="myInput" id="myDropdown">
+            <option value="drop val1">val1</option>
+            <option value="drop val2">val2</option>
+            <option value="drop val3">val3</option>
         </select>
 
     <script>
         $(document).ready(function () {     
             $("button").click(function () {
                 var value = $('#myInput').val(); //The val() method returns or sets the value attribute of the selected elements.
+                //function
+                $('input[type = "text"]').val(function(i, origValue){
+                    return origValue + 'New value';
+                    
+                });
                 alert(value);
-                $('#myInput').val('New value');
+                // $('#myInput').val('New value');
 
                 var checkboxValues = $('input[name="myInput"]:checked').map(function() {
                     return $(this).val();
                 }).get(); //The get() method returns the value of the value attribute of the FIRST matched element.
                 alert(checkboxValues);
 
-                var newValues = ['vaal1', 'vaal2', 'vaal3'];
-                $('input[type="text"]').val(newValues);
+                // var newValues = ['vaal1', 'vaal2', 'vaal3'];
+                // $('input[type="text"]').val(newValues);
+
+               
 
             });
+             //dropdown
+             $('#myDropdown').change(function(){  //The change() method triggers the change event, or attaches a function to run when a change event occurs.
+                    var selectedValue = $(this).val(); //The val() method returns or sets the value attribute of the selected elements. 
+                    alert(selectedValue);
+                })
 
         });  
     </script>
