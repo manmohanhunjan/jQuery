@@ -18,28 +18,40 @@
 
 <body>
     <div class="div1"></div>
-    <button>Insert afterHoJa aur right click pe append</button>
+    <button>clone ho ja</button>
 
     <script>
         $(() => {
             const afterHoJa = () => {
                 $(".div1").after("<p>after</p>");
-               
             }
+            
             const appendHoJa = () => {
                 $(".div1").append("<p>append</p>");
-               
             }
-            //before() example
-            $("button").on('click', afterHoJa);
-            //appendHoJa() example
-            $("button").on('contextmenu', appendHoJa);
-            
 
+            const cloning = () => {
+                $('button').after(clonedElement);
+            }
+
+            // 'afterHoJa()' example
+            $("button").on('click', afterHoJa);
+            
+            // 'appendHoJa()' example
+            $("button").on('contextmenu', appendHoJa);
+
+            // Cloning functionality
+            var clonedElement = null;
+
+            $('button').on('mouseenter', function() {
+                clonedElement = $(this).clone(true); // Deep cloning
+            });
+
+            $('button').on('mouseleave', function() {
+                clonedElement.remove(); // Remove the cloned element on mouseleave
+            });
         });
     </script>
-
-
 </body>
 
 </html>
