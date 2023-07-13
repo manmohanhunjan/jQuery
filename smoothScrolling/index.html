@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Selector Exercise</title>
+    
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to jQuery Selector Exercise</h1>
+    <p>This is a paragraph.</p>
+    <p class="highlight">This is another paragraph with the 'highlight' class.</p>
+    <img src="https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+        alt="Sample Image">
+    <div class="container">
+        <p>This is nested paragraph</p>
+    </div>
+    <ul>
+        
+    </ul>
+
+    <a href="#">Google</a>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('p').css('color', 'blue');
+
+//Target the second list item and add a class
+$('li:nth-child(2)').addClass('highlight');
+
+//Target the image and change its width
+$('img').css('width', '200px');
+
+// Target the nested paragraph inside the container div and change its background color
+$('#container p').css('background-color', 'pink')
+$('a[href^="#"]').on('click', function(event) {
+    event.preventDefault();
+    $('html, body').animate({
+      scrollTop: $($.attr(this, 'href')).offset().top
+    }, 1000);
+            })
+        });
+    </script>
+</body>
+
+</html>

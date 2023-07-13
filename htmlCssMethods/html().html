@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {     //The html() method sets or returns the content (innerHTML) of the selected elements.
+            $("button").click(function () {
+                $('p').html(function (index, oldContent) {  //The function is a callback function to be invoked for each element in the matched set.
+                    return 'Prefix: ' + (index+1) + oldContent; 
+                });
+
+            });
+        });  
+    </script>
+</head>
+
+<body>
+    <button>Click here to change the content of all p elements</button>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+</body>
+
+</html>

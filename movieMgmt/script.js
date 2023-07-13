@@ -20,6 +20,7 @@ $(()=>{
 
         // create object
         var movieObj = {
+            id: count,
             name: name,
             description: description,
             rating: rating,
@@ -67,7 +68,7 @@ $(()=>{
         alert("Movie added to table")
         var movieObj = movieArray[id]
         $("tbody").append(`<tr>
-        <td>${count}</td>
+        <td>${movieObj.id+1}</td>
         <td>${movieObj.name}</td>
         <td>${movieObj.rating}</td>
         <td>${movieObj.genre}</td>

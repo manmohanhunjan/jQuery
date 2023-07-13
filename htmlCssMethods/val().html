@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>val()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    
+</head>
+
+<body>
+    <button>Click here to change the content of all p elements</button>
+    <div>
+        <input type="text" name="myInput" id="myInput">
+        <input type="text" name="myInput" id="myInput">
+        <input type="text" name="myInput" id="myInput">
+    </div>
+
+    <!-- 3 checkboxes -->
+    <div>
+        <input type="checkbox" name="myInput" id="myInput" value="val1">
+        <input type="checkbox" name="myInput" id="myInput" value="val2">
+        <input type="checkbox" name="myInput" id="myInput" value="val3">
+    </div>
+
+    <script>
+        $(document).ready(function () {     
+            $("button").click(function () {
+                var value = $('#myInput').val(); //The val() method returns or sets the value attribute of the selected elements.
+                alert(value);
+                $('#myInput').val('New value');
+
+                var checkboxValues = $('input[name="myInput"]:checked').map(function() {
+                    return $(this).val();
+                }).get(); //The get() method returns the value of the value attribute of the FIRST matched element.
+                alert(checkboxValues);
+
+                var newValues = ['vaal1', 'vaal2', 'vaal3'];
+                $('input[type="text"]').val(newValues);
+
+            });
+
+        });  
+    </script>
+</body>
+
+</html>
