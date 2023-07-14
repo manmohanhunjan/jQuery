@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detach()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <p>hello</p>
+        <p>hola</p>
+        <p>adios</p>
+    </div>
+    <button>detach()</button>
+
+    <script>
+        $(()=>{
+
+            let detachedElement = null;
+
+            const detachHoja = () => {
+              detachedElement =  $(".div1").detach();    // detach() removes the selected element and its child elements
+              setTimeout(function () {
+                if(detachedElement){
+                    detachedElement.appendTo("body")
+                } 
+              }, 5000);
+                console.log("detach()") 
+            }
+        const attachHoja = () =>{
+            detachedElement.appendTo("body")
+        }
+            $("button").on('click', detachHoja)
+            $("button").on('dblclick', attachHoja)
+        })
+    </script>
+</body>
+</html>

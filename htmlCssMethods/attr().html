@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>attr()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <p>hello</p>
+        <p>hola</p>
+        <p>adios</p>
+    </div>
+    <button>attr()</button>
+
+    <script>
+        $(()=>{
+            const attrHoja = () => {
+                // var attrHai = $(".div1").attr('class');    // attr() removes the child elements of the selected element
+                // $('p').text(attrHai)
+                $(".div1").attr('id', 'helo');
+                $('p').text($('.div1').attr('id'))
+            }
+            $("button").on('click', attrHoja)
+        })
+    </script>
+</body>
+</html>

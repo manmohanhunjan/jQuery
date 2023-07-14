@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todolist with prop()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        body, html{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        .formContainer{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: lightgray;
+        }
+        form{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        label, input, button{
+            margin: 10px;
+        }
+        input{
+            border-radius: 5px;
+            border: none;
+            padding: 5px;
+        }
+        .listContainer{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .completed{
+            text-decoration: line-through;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="formContainer">
+            <form action="">
+                <label for="taskName">Enter a Task</label>
+                <input type="text" id="taskName">
+                <button id="btn">Add Task</button>
+            </form>
+        </div>
+        <div class="listContainer">
+            <div style="border: 2px solid blue; padding: 5px;"><div style="border: 1px solid black;">
+                <ul id="list">
+                </ul>
+            </div></div>
+        </div>
+        
+    </div>
+    <script>
+        $(()=>{
+            const addTask = (e) => {
+                e.preventDefault();
+                if($('#taskName').val() == ''){
+                    alert('Please enter a task')
+                    return;
+                } else{
+
+                    const taskName = $('#taskName').val();
+                    $('#list').append(`<li>${taskName}<button class='remover'>X</button></li>`)
+                    $('#taskName').val('');
+                }
+
+            }
+            $('#btn').on('click', addTask)
+
+            $('#list').on('click', '.remover', function(){
+                $(this).parents().hide();   // parent().hide() removes the parent element of the selected element
+            })
+
+            $('#list').on('click', 'li', function(){
+                $(this).toggleClass('completed');
+            })
+
+        })
+    </script>
+</body>
+</html>

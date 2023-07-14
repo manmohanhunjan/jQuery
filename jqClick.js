@@ -11,7 +11,7 @@
 ? Shorthand for $(document).ready() */
 
 function readyFn( jQuery ) {
-    alert("Hello World!")
+    console.log("Hello World!")
 }
 
 $(readyFn)

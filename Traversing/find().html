@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+
+        <style>
+            .highlight{
+                background-color: yellow;
+            }
+        </style>
+</head>
+
+<body>
+    <div id="container">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <div class="content">
+            <p>Some Text</p>
+            <p>More Text</p>
+        </div>
+    </div>
+
+    <script>
+        $(()=>{
+            var container = $("#container ul li");
+            // var foundElement = container.find("ul li");  //find() method will find all the li elements inside the ul element
+            container.addClass("highlight");
+
+            //Find and modify the content of the p element
+            var contentDiv = container.find(".content");
+            var foundP = contentDiv.find("p");
+            foundP.text("New Text");
+        })
+    </script>
+
+
+
+</body>
+
+</html>
