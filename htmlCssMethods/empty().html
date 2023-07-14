@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>empty()</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            background-color: lightblue
+        }
+    </style>
+</head>
+<body>
+    <div class="div1">
+        <p>hello</p>
+        <p>hola</p>
+        <p>adios</p>
+    </div>
+    <button>empty()</button>
+
+    <script>
+        $(()=>{
+            const emptyHoja = () => {
+                $(".div1").empty();    // empty() removes the child elements of the selected element
+                console.log("empty()") 
+            }
+            $("button").on('click', emptyHoja)
+        })
+    </script>
+</body>
+</html>
